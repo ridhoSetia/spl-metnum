@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sistem Persamaan Linear</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 40px;
+      }
+      form {
+        margin-bottom: 20px;
+      }
+      button {
+        margin: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 15px;
+        border-left: 5px solid #ccc;
+        overflow-x: auto;
+      }
+      input[type="number"] {
+        width: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Metode Penyelesaian Sistem Persamaan Linear</h1>
+
+    <div class="matrix">
+      <h3>Matriks Augmented [A | B]:</h3>
+      <table>
+        {% for i in range(A|length) %}
+        <tr>
+          {% for val in A[i] %}
+          <td>{{ val }}</td>
+          {% endfor %}
+          <td style="font-weight: bold">|</td>
+          <td>{{ B[i] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <p>Ganti nilai matriks:</p>
+    <form method="POST">
+      <h3>Masukkan Matriks A dan Vektor B</h3>
+      <table>
+        {% for i in range(3) %}
+        <tr>
+          {% for j in range(3) %}
+          <td>
+            <input
+              type="number"
+              step="any"
+              name="a_{{i}}_{{j}}"
+              value="{{ A[i][j] }}"
+            />
+          </td>
+          {% endfor %}
+          <td style="font-weight: bold">|</td>
+          <td>
+            <input type="number" step="any" name="b_{{i}}" value="{{ B[i] }}" />
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <button type="submit">Ganti</button>
+
+      <br /><br />
+
+      <button name="metode" value="Eliminasi Gauss">Eliminasi Gauss</button>
+      <button name="metode" value="Gauss Jordan">Gauss Jordan</button>
+      <button name="metode" value="Dekomposisi Lu">Dekomposisi Lu</button>
+      <button name="metode" value="Matriks Balikan">Matriks Balikan</button>
+      <button name="metode" value="Lelaran Jacobi">Lelaran Jacobi</button>
+      <button name="metode" value="Lelaran Gauss Seidel">
+        Lelaran Gauss Seidel
+      </button>
+    </form>
+
+    {% if metode %}
+    <h2>Hasil Metode {{ metode }}</h2>
+    <pre>{{ hasil }}</pre>
+    {% endif %}
+  </body>
+</html>
