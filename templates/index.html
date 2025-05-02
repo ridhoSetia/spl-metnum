@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Persamaan Linear</title>
     <style>
       body {
@@ -13,7 +14,7 @@
       }
       button {
         margin: 5px;
-        padding: 10px 20px;
+        padding: 10px 10px;
         font-size: 16px;
       }
       pre {
@@ -23,7 +24,11 @@
         overflow-x: auto;
       }
       input[type="number"] {
-        width: 60px;
+        width: 40px;
+      }
+      .metode-button {
+        display: flex;
+        flex-wrap: wrap;
       }
     </style>
   </head>
@@ -71,15 +76,16 @@
       <button type="submit">Ganti</button>
 
       <br /><br />
-
-      <button name="metode" value="Eliminasi Gauss">Eliminasi Gauss</button>
-      <button name="metode" value="Gauss Jordan">Gauss Jordan</button>
-      <button name="metode" value="Dekomposisi Lu">Dekomposisi Lu</button>
-      <button name="metode" value="Matriks Balikan">Matriks Balikan</button>
-      <button name="metode" value="Lelaran Jacobi">Lelaran Jacobi</button>
-      <button name="metode" value="Lelaran Gauss Seidel">
-        Lelaran Gauss Seidel
-      </button>
+      <div class="metode-button">
+        <button name="metode" value="Eliminasi Gauss">Eliminasi Gauss</button>
+        <button name="metode" value="Gauss Jordan">Gauss Jordan</button>
+        <button name="metode" value="Dekomposisi Lu">Dekomposisi Lu</button>
+        <button name="metode" value="Matriks Balikan">Matriks Balikan</button>
+        <button name="metode" value="Lelaran Jacobi">Lelaran Jacobi</button>
+        <button name="metode" value="Lelaran Gauss Seidel">
+          Lelaran Gauss Seidel
+        </button>
+      </div>
     </form>
 
     {% if metode %}
